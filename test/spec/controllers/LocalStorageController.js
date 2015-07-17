@@ -44,11 +44,11 @@ describe('Service: LocalStorageController', function () {
         var expectedTree;
 
         expectedTree = [{"id":0,"name":"Element","nodes":[{"id":1,"name":"Element-1","nodes":[{"id":2,"name":"Element-1-1","nodes":[]}]},{"id":3,"name":"Element-2","nodes":[]}]}];
-        scope.$parent.solutionType = 'Recursive';
+        scope.$parent.solutionType = CONSTANTS.RECURSIVE;
         testSaveRetrieve(modelService, CONSTANTS, expectedTree);
 
         expectedTree = [{"name":"Element","depth":0,"parent":null},{"name":"Element-2","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},{"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},{"name":"Element-1-1","depth":2,"parent":{"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}}}];
-        scope.$parent.solutionType = 'Iterative';
+        scope.$parent.solutionType = CONSTANTS.ITERATIVE;
         testSaveRetrieve(modelService, CONSTANTS, expectedTree);
     }]));
 
@@ -56,11 +56,11 @@ describe('Service: LocalStorageController', function () {
         var expectedTree;
 
         expectedTree = [{"id":0,"name":"Element","nodes":[{"id":1,"name":"Element-1","nodes":[{"id":2,"name":"Element-1-1","nodes":[]}]},{"id":3,"name":"Element-2","nodes":[]}]}];
-        scope.$parent.solutionType = 'Recursive';
+        scope.$parent.solutionType = CONSTANTS.RECURSIVE;
         testDelete(modelService, CONSTANTS, expectedTree);
 
         expectedTree = [{"name":"Element","depth":0,"parent":null},{"name":"Element-2","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},{"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},{"name":"Element-1-1","depth":2,"parent":{"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}}}];
-        scope.$parent.solutionType = 'Iterative';
+        scope.$parent.solutionType = CONSTANTS.ITERATIVE;
         testDelete(modelService, CONSTANTS, expectedTree);
     }]));
 });

@@ -8,9 +8,9 @@
  * Controller of the treeForEvolutionApp
  */
 angular.module( 'treeForEvolutionApp' )
-    .controller( 'MainController', ['$scope', '$timeout', function ( $scope, $timeout ) {
+    .controller( 'MainController', ['$scope', '$timeout', 'CONSTANTS', function ( $scope, $timeout, CONSTANTS ) {
 
-        $scope.solutionType = 'Recursive';
+        $scope.solutionType = CONSTANTS.RECURSIVE;
 
         //Switches Node to Edit Mode: HTML input with current Node Name appears
         $scope.switchToEdit = function(index) {

@@ -6,6 +6,7 @@ angular.module( 'treeForEvolutionApp' ).factory('treeService', function() {
     var nodeId = 0;
 
     return {
+        //Used for Recursive approach
         removeNodeById: function ( arr, id ) {
             var result = null;
 

@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module( 'treeForEvolutionApp' ).factory('modelService', ['recursiveTreeModel', 'iterativeTreeModel',
-    function(recursiveTreeModel, iterativeTreeModel) {
+angular.module( 'treeForEvolutionApp' ).factory('modelService', ['recursiveTreeModel', 'iterativeTreeModel', 'CONSTANTS',
+    function(recursiveTreeModel, iterativeTreeModel, CONSTANTS) {
 
     return {
         getCurrentTree: function ( solutionType ) {
-            if( solutionType === 'Recursive') {
+            if( solutionType === CONSTANTS.RECURSIVE ) {
                 return recursiveTreeModel.getTree();
             }
 
@@ -13,7 +13,7 @@ angular.module( 'treeForEvolutionApp' ).factory('modelService', ['recursiveTreeM
         },
 
         setCurrentTree: function ( solutionType, tree ) {
-            if( solutionType === 'Recursive') {
+            if( solutionType === CONSTANTS.RECURSIVE ) {
                 recursiveTreeModel.setTree(tree);
             } else {
                 iterativeTreeModel.setTree(tree);
