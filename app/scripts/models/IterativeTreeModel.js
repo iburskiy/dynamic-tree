@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module( 'treeForEvolutionApp' ).factory('iterativeTreeModel', ['IterativeNodeItem', 'treeService', function(IterativeNodeItem, treeService) {
+angular.module( 'dynamic-tree' ).factory('iterativeTreeModel', ['IterativeNodeItem', 'treeService', function(IterativeNodeItem, treeService) {
 
     var tree = [new IterativeNodeItem( "Element", 0, null )];
     var iterativeTree = {};

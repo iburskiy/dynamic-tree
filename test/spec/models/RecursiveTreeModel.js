@@ -3,7 +3,7 @@
 describe('Model: RecursiveTreeModel', function () {
 
     // load the controller's module
-    beforeEach(module('treeForEvolutionApp'));
+    beforeEach(module('dynamic-tree'));
 
     var RecursiveTreeController,
         recursiveTree,

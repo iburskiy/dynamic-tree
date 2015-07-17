@@ -3,7 +3,7 @@
 describe('Model: IterativeTreeModel', function () {
 
     // load the controller's module
-    beforeEach(module('treeForEvolutionApp'));
+    beforeEach(module('dynamic-tree'));
 
     var IterativeTreeController,
         iterativeTree,

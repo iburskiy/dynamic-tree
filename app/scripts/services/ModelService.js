@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module( 'treeForEvolutionApp' ).factory('modelService', ['recursiveTreeModel', 'iterativeTreeModel', 'CONSTANTS',
+angular.module( 'dynamic-tree' ).factory('modelService', ['recursiveTreeModel', 'iterativeTreeModel', 'CONSTANTS',
     function(recursiveTreeModel, iterativeTreeModel, CONSTANTS) {
 
     return {

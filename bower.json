@@ -10,7 +10,7 @@
     "angular-mocks": "^1.3.0"
   },
   "appPath": "app",
-  "moduleName": "treeForEvolutionApp",
+  "moduleName": "dynamic-tree",
   "overrides": {
     "bootstrap": {
       "main": [

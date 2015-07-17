@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module( 'treeForEvolutionApp' ).factory('treeService', function() {
+angular.module( 'dynamic-tree' ).factory('treeService', function() {
 
     //id for new node for iterative solution
     var nodeId = 0;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module( 'treeForEvolutionApp' ).factory('localStorageService', ['CONSTANTS', function(CONSTANTS) {
+angular.module( 'dynamic-tree' ).factory('localStorageService', ['CONSTANTS', function(CONSTANTS) {
 
     return {
         save: function ( tree, solutionType ) {

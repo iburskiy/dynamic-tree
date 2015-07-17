@@ -3,7 +3,7 @@
 describe('Service: LocalStorageController', function () {
 
     // load the controller's module
-    beforeEach(module('treeForEvolutionApp'));
+    beforeEach(module('dynamic-tree'));
 
     var LocalStorageController,
         scope;

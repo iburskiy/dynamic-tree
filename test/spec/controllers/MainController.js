@@ -3,7 +3,7 @@
 describe('Controller: MainController', function () {
 
   // load the controller's module
-  beforeEach(module('treeForEvolutionApp'));
+  beforeEach(module('dynamic-tree'));
 
   var MainController,
     scope;

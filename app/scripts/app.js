@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc overview
- * @name treeForEvolutionApp
+ * @name dynamic-tree
  * @description
- * # treeForEvolutionApp
+ * # dynamic-tree
  *
  * Main module of the application.
  */
-angular.module('treeForEvolutionApp', []);
+angular.module('dynamic-tree', []);

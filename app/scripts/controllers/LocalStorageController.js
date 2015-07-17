@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module( 'treeForEvolutionApp' ).
+angular.module( 'dynamic-tree' ).
     controller("LocalStorageController", ['$scope', 'localStorageService', 'modelService',
         function($scope, localStorageService, modelService) {
 

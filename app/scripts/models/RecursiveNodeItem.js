@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('treeForEvolutionApp').factory('RecursiveNodeItem', ['treeService', function(treeService) {
+angular.module('dynamic-tree').factory('RecursiveNodeItem', ['treeService', function(treeService) {
 
     //model for Recursive Node Item
     function RecursiveNodeItem ( id, name ) {

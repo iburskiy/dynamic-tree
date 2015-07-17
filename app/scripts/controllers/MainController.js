@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name treeForEvolutionApp.controller:MainController
+ * @name dynamic-tree.controller:MainController
  * @description
  * # MainController
- * Controller of the treeForEvolutionApp
+ * Controller of the dynamic-tree
  */
-angular.module( 'treeForEvolutionApp' )
+angular.module( 'dynamic-tree' )
     .controller( 'MainController', ['$scope', '$timeout', 'CONSTANTS', function ( $scope, $timeout, CONSTANTS ) {
 
         $scope.solutionType = CONSTANTS.RECURSIVE;
