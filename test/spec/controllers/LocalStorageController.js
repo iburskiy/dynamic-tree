@@ -14,53 +14,49 @@ describe('Service: LocalStorageController', function () {
         LocalStorageController = $controller('LocalStorageController', {$scope: scope});
     }));
 
-    function testSaveRetrieve(modelService, CONSTANTS, expectedTree) {
+    function testSaveRetrieve(modelService, CONSTANTS, expectedTree, solutionType) {
         var actualTree;
 
-        modelService.setCurrentTree( scope.$parent.solutionType, angular.copy(expectedTree) );
-        scope.save();
-        expect( localStorage.getItem(CONSTANTS.TREE_STATE + scope.$parent.solutionType) ).toEqual( JSON.stringify( expectedTree ) );
+        modelService.setCurrentTree( solutionType, angular.copy(expectedTree) );
+        scope.save( solutionType );
+        expect( localStorage.getItem(CONSTANTS.TREE_STATE + solutionType) ).toEqual( JSON.stringify( expectedTree ) );
 
-        modelService.setCurrentTree( scope.$parent.solutionType, [] );
-        actualTree = modelService.getCurrentTree(scope.$parent.solutionType);
+        modelService.setCurrentTree( solutionType, [] );
+        actualTree = modelService.getCurrentTree( solutionType );
         expect( actualTree ).toEqual( [] );
 
-        scope.retrieve();
-        actualTree = modelService.getCurrentTree(scope.$parent.solutionType);
+        scope.retrieve( solutionType );
+        actualTree = modelService.getCurrentTree( solutionType );
         expect( JSON.stringify( actualTree ) ).toEqual( JSON.stringify( expectedTree ) );
     }
 
-    function testDelete(modelService, CONSTANTS, expectedTree) {
-        modelService.setCurrentTree( scope.$parent.solutionType, angular.copy(expectedTree) );
+    function testDelete(modelService, CONSTANTS, expectedTree, solutionType) {
+        modelService.setCurrentTree( solutionType, angular.copy(expectedTree) );
 
-        scope.save();
-        expect( localStorage.getItem(CONSTANTS.TREE_STATE + scope.$parent.solutionType) ).toEqual( JSON.stringify( expectedTree ) );
+        scope.save( solutionType );
+        expect( localStorage.getItem(CONSTANTS.TREE_STATE + solutionType) ).toEqual( JSON.stringify( expectedTree ) );
 
-        scope.delete();
-        expect( localStorage.getItem(CONSTANTS.TREE_STATE + scope.$parent.solutionType) ).toEqual( null );
+        scope.delete( solutionType );
+        expect( localStorage.getItem(CONSTANTS.TREE_STATE + solutionType) ).toEqual( null );
     }
 
-    it('Recursive: test for save() and retrieve()', inject(['modelService', 'CONSTANTS', function(modelService, CONSTANTS) {
-        var expectedTree;
+    it('Recursive and Iterative: test for save() and retrieve()', inject(['modelService', 'CONSTANTS', function(modelService, CONSTANTS) {
+        //Test for Recursive case
+        var expectedTree = [{"id":0,"name":"Element","nodes":[{"id":1,"name":"Element-1","nodes":[{"id":2,"name":"Element-1-1","nodes":[]}]},{"id":3,"name":"Element-2","nodes":[]}]}];
+        testSaveRetrieve(modelService, CONSTANTS, expectedTree, CONSTANTS.RECURSIVE);
 
-        expectedTree = [{"id":0,"name":"Element","nodes":[{"id":1,"name":"Element-1","nodes":[{"id":2,"name":"Element-1-1","nodes":[]}]},{"id":3,"name":"Element-2","nodes":[]}]}];
-        scope.$parent.solutionType = CONSTANTS.RECURSIVE;
-        testSaveRetrieve(modelService, CONSTANTS, expectedTree);
-
+        //Test for Iterative case
         expectedTree = [{"name":"Element","depth":0,"parent":null},{"name":"Element-2","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},{"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},{"name":"Element-1-1","depth":2,"parent":{"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}}}];
-        scope.$parent.solutionType = CONSTANTS.ITERATIVE;
-        testSaveRetrieve(modelService, CONSTANTS, expectedTree);
+        testSaveRetrieve(modelService, CONSTANTS, expectedTree, CONSTANTS.ITERATIVE);
     }]));
 
     it('Recursive and Iterative: test for delete()', inject(['modelService', 'CONSTANTS', function( modelService, CONSTANTS ) {
-        var expectedTree;
+        //Test for Recursive case
+        var expectedTree = [{"id":0,"name":"Element","nodes":[{"id":1,"name":"Element-1","nodes":[{"id":2,"name":"Element-1-1","nodes":[]}]},{"id":3,"name":"Element-2","nodes":[]}]}];
+        testDelete(modelService, CONSTANTS, expectedTree, CONSTANTS.RECURSIVE);
 
-        expectedTree = [{"id":0,"name":"Element","nodes":[{"id":1,"name":"Element-1","nodes":[{"id":2,"name":"Element-1-1","nodes":[]}]},{"id":3,"name":"Element-2","nodes":[]}]}];
-        scope.$parent.solutionType = CONSTANTS.RECURSIVE;
-        testDelete(modelService, CONSTANTS, expectedTree);
-
+        //Test for Iterative case
         expectedTree = [{"name":"Element","depth":0,"parent":null},{"name":"Element-2","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},{"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},{"name":"Element-1-1","depth":2,"parent":{"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}}}];
-        scope.$parent.solutionType = CONSTANTS.ITERATIVE;
-        testDelete(modelService, CONSTANTS, expectedTree);
+        testDelete(modelService, CONSTANTS, expectedTree, CONSTANTS.ITERATIVE);
     }]));
 });

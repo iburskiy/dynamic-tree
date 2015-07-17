@@ -1,8 +1,8 @@
-<button class="btn btn-success" ng-click="save()">Save</button>
+<button class="btn btn-success" ng-click="save( $parent.solutionType )">Save</button>
 
-<span ng-show="isTreeSaved()">
-    <button class="btn btn-success" ng-click="retrieve()">Retrieve</button>
-    <button class="btn btn-success" ng-click="delete()">Delete</button>
+<span ng-show="isTreeSaved( $parent.solutionType )">
+    <button class="btn btn-success" ng-click="retrieve( $parent.solutionType )">Retrieve</button>
+    <button class="btn btn-success" ng-click="delete( $parent.solutionType )">Delete</button>
 
     <br/>
 

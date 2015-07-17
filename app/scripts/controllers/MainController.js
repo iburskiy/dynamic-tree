@@ -16,9 +16,10 @@ angular.module( 'treeForEvolutionApp' )
         $scope.switchToEdit = function(index) {
             $scope.editedElemId = index;
             $scope.isEdit = true;
+            //this syntax gives that function is run only after everything is rendered
             $timeout( function () {
                     document.getElementById('input' + index ).focus();
-                }, 100
+                }, 0
             );
         };
 
