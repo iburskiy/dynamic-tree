@@ -17,8 +17,7 @@ describe('Model: RecursiveTreeModel', function () {
     }));
 
     it('test for add()', inject(['RecursiveNodeItem', function(RecursiveNodeItem) {
-        var rootElem = angular.copy( recursiveTree[0] ),
-            expectedTree = [];
+        var expectedTree = [];
 
         scope.recursiveTreeModel.add(recursiveTree[0]);
 

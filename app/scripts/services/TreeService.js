@@ -13,9 +13,7 @@ angular.module( 'treeForEvolutionApp' ).factory('treeService', function() {
                 if(arr[i].id === id) {
                     result = arr[i].name;
                     arr.splice(i, 1);
-                } else if ( arr[i].nodes.length === 0 ) {
-                    continue;
-                } else {
+                } else if ( arr[i].nodes.length !== 0 ) {
                     result = this.removeNodeById (arr[i].nodes, id);
                 }
             }

@@ -8,5 +8,4 @@
  *
  * Main module of the application.
  */
-angular
-  .module('treeForEvolutionApp', []);
+angular.module('treeForEvolutionApp', []);
