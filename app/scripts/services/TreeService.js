@@ -6,7 +6,7 @@ angular.module( 'dynamic-tree' ).factory('treeService', function() {
     var nodeId = 0;
 
     return {
-        //Used for Recursive approach
+        //Used for Recursive solution
         removeNodeById: function ( arr, id ) {
             var result = null;
 
@@ -27,23 +27,23 @@ angular.module( 'dynamic-tree' ).factory('treeService', function() {
             return nodeId;
         },
 
-        /*Used for Iterative approach:
-            filters through array and doesn't include element to 'tree' if 'removed' is one of its ancestors*/
+        /*Used for Iterative solution:
+         Filters through array and excludes 'obj' from 'arr' if removed node wth 'index' is one of its ancestors*/
         removeNodeByIndex: function( arr, index) {
 
             var tree = _.filter(arr, function(obj) {
-                return hasRemovedAsAncestor(obj);
+                return removedIndexNotObjAncestor(obj);
             } );
 
-            //Returns true if 'removed' is parent of obj
-            function hasRemovedAsAncestor(obj) {
+            //Returns false if removed object with "index" is parent of obj to exclude it from tree
+            function removedIndexNotObjAncestor(obj) {
                 var result = null;
                 if( obj === null) {
                     return true;
                 } else if( angular.toJson(arr[index]) === angular.toJson(obj)) {
                     return false;
                 } else {
-                    result = hasRemovedAsAncestor(obj.parent);
+                    result = removedIndexNotObjAncestor(obj.parent);
                 }
 
                 return result;

@@ -2,7 +2,9 @@
 
 angular.module( 'dynamic-tree' ).factory('iterativeTreeModel', ['IterativeNodeModel', 'treeService', function(IterativeNodeModel, treeService) {
 
+    //private field
     var tree = [new IterativeNodeModel( "Element", 0, null )];
+    //public model
     var iterativeTree = {};
 
     //Adds new node to the tree

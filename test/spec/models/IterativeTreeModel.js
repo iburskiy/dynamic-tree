@@ -28,17 +28,17 @@ describe('Model: IterativeTreeModel', function () {
         expect( JSON.stringify( scope.iterativeTreeModel.getTree() ) ).toEqual( JSON.stringify( expectedTree ) );
     }]));
 
+    /*build the following object: [
+     {"name":"Element","depth":0,"parent":null},
+     {"name":"Element-2","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},
+     {"name":"Element-2-1","depth":2,"parent":{"name":"Element-2","depth":1,"parent":{"name":"Element","depth":0,"parent":null}}},
+     {"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}}
+     ]
+     and then remove 'Element-2-1'*/
     it('test for remove()', inject(['IterativeNodeModel', function(IterativeNodeModel) {
         var rootElem = angular.copy( iterativeTree[0] ),
             expectedTree = [];
 
-         /*build the following object: [
-         {"name":"Element","depth":0,"parent":null},
-         {"name":"Element-2","depth":1,"parent":{"name":"Element","depth":0,"parent":null}},
-         {"name":"Element-2-1","depth":2,"parent":{"name":"Element-2","depth":1,"parent":{"name":"Element","depth":0,"parent":null}}},
-         {"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}}
-         ]
-         and then remove 'Element-2-1'*/
         iterativeTree.push( new IterativeNodeModel('Element-2', 1, rootElem) );
         iterativeTree.push( new IterativeNodeModel('Element-2-1', 2, new IterativeNodeModel('Element-2', 1, rootElem) ) );
         iterativeTree.push( new IterativeNodeModel('Element-1', 1, rootElem) );

@@ -2,7 +2,9 @@
 
 angular.module( 'dynamic-tree' ).factory('recursiveTreeModel', ['RecursiveNodeModel', 'treeService', function(RecursiveNodeModel, treeService) {
 
+    //private field
     var tree = [new RecursiveNodeModel( 0, "Element" )];
+    //public model
     var recursiveTree = {};
 
     //Adds new node to the tree
