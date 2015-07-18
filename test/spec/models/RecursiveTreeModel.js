@@ -16,18 +16,18 @@ describe('Model: RecursiveTreeModel', function () {
         recursiveTree = scope.recursiveTreeModel.getTree();
     }));
 
-    it('test for add()', inject(['RecursiveNodeItem', function(RecursiveNodeItem) {
+    it('test for add()', inject(['RecursiveNodeModel', function(RecursiveNodeModel) {
         var expectedTree = [];
 
         scope.recursiveTreeModel.add(recursiveTree[0]);
 
-        expectedTree.push( new RecursiveNodeItem(0, "Element") );
-        expectedTree[0].nodes.push( new RecursiveNodeItem(1, 'Element-1') );
+        expectedTree.push( new RecursiveNodeModel(0, "Element") );
+        expectedTree[0].nodes.push( new RecursiveNodeModel(1, 'Element-1') );
 
         expect( JSON.stringify( scope.recursiveTreeModel.getTree() ) ).toEqual( JSON.stringify( expectedTree ) );
     }]));
 
-    it('test for remove()', inject(['RecursiveNodeItem', function(RecursiveNodeItem) {
+    it('test for remove()', inject(['RecursiveNodeModel', function(RecursiveNodeModel) {
         var expectedTree = [];
 
         /*build the following object: [
@@ -44,9 +44,9 @@ describe('Model: RecursiveTreeModel', function () {
         //remove element with id=2
         scope.recursiveTreeModel.remove(2);
 
-        expectedTree.push(new RecursiveNodeItem(0, "Element"));
-        expectedTree[0].nodes.push(new RecursiveNodeItem(1, 'Element-1'));
-        expectedTree[0].nodes.push(new RecursiveNodeItem(3, 'Element-2'));
+        expectedTree.push(new RecursiveNodeModel(0, "Element"));
+        expectedTree[0].nodes.push(new RecursiveNodeModel(1, 'Element-1'));
+        expectedTree[0].nodes.push(new RecursiveNodeModel(3, 'Element-2'));
 
         expect( JSON.stringify( scope.recursiveTreeModel.getTree() ) ).toEqual( JSON.stringify( expectedTree ) );
     }]));

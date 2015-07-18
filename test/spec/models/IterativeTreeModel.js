@@ -16,19 +16,19 @@ describe('Model: IterativeTreeModel', function () {
         iterativeTree = scope.iterativeTreeModel.getTree();
     }));
 
-    it('test for add()', inject(['IterativeNodeItem', function(IterativeNodeItem) {
+    it('test for add()', inject(['IterativeNodeModel', function(IterativeNodeModel) {
         var rootElem = angular.copy( iterativeTree[0] ),
             expectedTree = [];
 
         scope.iterativeTreeModel.add(iterativeTree[0], 0);
 
-        expectedTree.push( new IterativeNodeItem("Element", 0, null) );
-        expectedTree.push( new IterativeNodeItem("Element-1", 1, rootElem) );
+        expectedTree.push( new IterativeNodeModel("Element", 0, null) );
+        expectedTree.push( new IterativeNodeModel("Element-1", 1, rootElem) );
 
         expect( JSON.stringify( scope.iterativeTreeModel.getTree() ) ).toEqual( JSON.stringify( expectedTree ) );
     }]));
 
-    it('test for remove()', inject(['IterativeNodeItem', function(IterativeNodeItem) {
+    it('test for remove()', inject(['IterativeNodeModel', function(IterativeNodeModel) {
         var rootElem = angular.copy( iterativeTree[0] ),
             expectedTree = [];
 
@@ -39,16 +39,16 @@ describe('Model: IterativeTreeModel', function () {
          {"name":"Element-1","depth":1,"parent":{"name":"Element","depth":0,"parent":null}}
          ]
          and then remove 'Element-2-1'*/
-        iterativeTree.push( new IterativeNodeItem('Element-2', 1, rootElem) );
-        iterativeTree.push( new IterativeNodeItem('Element-2-1', 2, new IterativeNodeItem('Element-2', 1, rootElem) ) );
-        iterativeTree.push( new IterativeNodeItem('Element-1', 1, rootElem) );
+        iterativeTree.push( new IterativeNodeModel('Element-2', 1, rootElem) );
+        iterativeTree.push( new IterativeNodeModel('Element-2-1', 2, new IterativeNodeModel('Element-2', 1, rootElem) ) );
+        iterativeTree.push( new IterativeNodeModel('Element-1', 1, rootElem) );
 
         //remove element with id=2
         scope.iterativeTreeModel.remove(2);
 
-        expectedTree.push( new IterativeNodeItem("Element", 0, null) );
-        expectedTree.push( new IterativeNodeItem('Element-2', 1, rootElem) );
-        expectedTree.push( new IterativeNodeItem('Element-1', 1, rootElem) );
+        expectedTree.push( new IterativeNodeModel("Element", 0, null) );
+        expectedTree.push( new IterativeNodeModel('Element-2', 1, rootElem) );
+        expectedTree.push( new IterativeNodeModel('Element-1', 1, rootElem) );
 
         expect( JSON.stringify( scope.iterativeTreeModel.getTree() ) ).toEqual( JSON.stringify( expectedTree ) );
     }]));

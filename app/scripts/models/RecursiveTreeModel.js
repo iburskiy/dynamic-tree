@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module( 'dynamic-tree' ).factory('recursiveTreeModel', ['RecursiveNodeItem', 'treeService', function(RecursiveNodeItem, treeService) {
+angular.module( 'dynamic-tree' ).factory('recursiveTreeModel', ['RecursiveNodeModel', 'treeService', function(RecursiveNodeModel, treeService) {
 
-    var tree = [new RecursiveNodeItem( 0, "Element" )];
+    var tree = [new RecursiveNodeModel( 0, "Element" )];
     var recursiveTree = {};
 
     //Adds new node to the tree
     recursiveTree.add = function(node) {
         var id = treeService.generateNodeId();
         var newName = node.name + '-' + (node.nodes.length + 1);
-        node.nodes.push(new RecursiveNodeItem(id, newName));
+        node.nodes.push(new RecursiveNodeModel(id, newName));
     };
 
     //Removes node item from the tree

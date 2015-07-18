@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module( 'dynamic-tree' ).factory('iterativeTreeModel', ['IterativeNodeItem', 'treeService', function(IterativeNodeItem, treeService) {
+angular.module( 'dynamic-tree' ).factory('iterativeTreeModel', ['IterativeNodeModel', 'treeService', function(IterativeNodeModel, treeService) {
 
-    var tree = [new IterativeNodeItem( "Element", 0, null )];
+    var tree = [new IterativeNodeModel( "Element", 0, null )];
     var iterativeTree = {};
 
     //Adds new node to the tree
@@ -13,7 +13,7 @@ angular.module( 'dynamic-tree' ).factory('iterativeTreeModel', ['IterativeNodeIt
 
         newName = node.name + '-' + (sameDepthArr.length + 1);
 
-        tree.splice( index + 1, 0, new IterativeNodeItem( newName, node.depth + 1, node ) );
+        tree.splice( index + 1, 0, new IterativeNodeModel( newName, node.depth + 1, node ) );
     };
 
     //Removes node item from the tree
