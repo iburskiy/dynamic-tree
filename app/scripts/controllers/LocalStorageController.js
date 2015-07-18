@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module( 'dynamic-tree' ).
-    controller("LocalStorageController", ['$scope', 'localStorageService', 'modelService',
-        function($scope, localStorageService, modelService) {
+    controller("LocalStorageController", ['$scope', 'localStorageService', 'treeModelService',
+        function($scope, localStorageService, treeModelService) {
 
         //Saves tree to Local Storage
         $scope.save = function( solutionType ) {
-            var tree = modelService.getCurrentTree( solutionType );
+            var tree = treeModelService.getCurrentTree( solutionType );
             localStorageService.save( tree, solutionType );
         };
 
         //Reads tree from Local Storage
         $scope.retrieve = function( solutionType ) {
             var tree = localStorageService.retrieve( solutionType );
-            modelService.setCurrentTree( solutionType, tree);
+            treeModelService.setCurrentTree( solutionType, tree);
             console.log('Tree has been retrieved!');
         };
 
