@@ -21,13 +21,13 @@ Example of the structure:
     - Subchild
 
 ##Features
+- Two solutions for the task: iterative and recursive
 - User is able to add/edit/delete child objects anywhere in the tree 
 - User is able to add subchildren infinitely.
 - It is possible to store the state in local storage.
 - It is possible to read the state from local storage
-- Iterative and recursive solutions
-- Loose coupling
-- AngularJS controllers, services, factories as models have been used
+- OOP aproach
+- Loose coupling code
 - Code is covered with Unit tests run by Karma
 
 ##Getting started
