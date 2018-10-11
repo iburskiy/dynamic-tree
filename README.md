@@ -57,3 +57,36 @@ grunt serve
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+## Troubleshooting
+
+**Issue:**
+
+```
+Running "concurrent:server" (concurrent) task
+    Warning: Running "compass:server" (compass) task
+    Warning: not found: compass Use --force to continue.
+    
+    Aborted due to warnings.
+```
+
+**Solution:**
+
+Need to install sass and compass.
+Standard command:
+`sudo gem install compass`
+but it gives the issue:
+```
+MacBook-Pro-Mac-4:dynamic-tree mac$ sudo gem install compass
+Password:
+Fetching: sass-3.4.25.gem (100%)
+ERROR:  While executing gem ... (Errno::EPERM)
+    Operation not permitted - /usr/bin/sass
+MacBook-Pro-Mac-4:dynamic-tree mac$ 
+```
+
+To resolve this one need to install sass with specific command and then install compass with specific command:
+```
+sudo gem install -n /usr/local/bin sass
+sudo gem install -n /usr/local/bin compass
+```
