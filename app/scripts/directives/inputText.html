@@ -1,0 +1,4 @@
+<span>
+  <span ng-show="node.id != 0 && (!isEdit || (node.id != editedElemId))" ng-click="switchToEdit(node.id)">{{node.name}} </span>
+  <input id="input{{node.id}}" ng-show="isEdit && (node.id == editedElemId)" type="text" ng-blur="switchToText()" ng-model="node.name"/>
+</span>

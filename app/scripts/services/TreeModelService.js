@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module( 'dynamic-tree' ).service('treeModelService', ['recursiveTreeModel', 'iterativeTreeModel', 'CONSTANTS',
+angular.module( 'dynamic-tree' ).service('treeModelService',
     function(recursiveTreeModel, iterativeTreeModel, CONSTANTS) {
 
     this.getCurrentTree = function ( solutionType ) {
@@ -18,4 +18,4 @@ angular.module( 'dynamic-tree' ).service('treeModelService', ['recursiveTreeMode
         iterativeTreeModel.setTree(tree);
       }
     };
-}]);
+});
